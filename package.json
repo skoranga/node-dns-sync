@@ -1,6 +1,6 @@
 {
   "name": "dns-sync",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "dns-sync",
   "main": "index.js",
   "scripts": {
@@ -20,11 +20,11 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "debug" : "~0.7",
-    "shelljs": "~0.2"
+    "debug" : "^2",
+    "shelljs": "~0.3"
   },
   "devDependencies": {
-    "mocha" : "~1",
-    "jshint" : "*"
+    "mocha" : "^1",
+    "jshint" : "^2"
   }
 }
