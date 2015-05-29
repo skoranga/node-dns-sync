@@ -33,9 +33,9 @@ describe('dns sync', function () {
     });
 
     it('should resolve NS records if asked', function () {
-        var ns = dnsSync.resolve('google.com', 'NS')
+        var ns = dnsSync.resolve('google.com', 'NS');
         assert.ok(ns);
         assert.ok(ns.length >= 1);
         assert.ok(ns[0].match(/^ns[0-9]+\.google\.com$/));
-    }); 
+    });
 });
