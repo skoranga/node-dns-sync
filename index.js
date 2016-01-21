@@ -1,1 +1,3 @@
-exports = module.exports = require('./lib/dns-sync');
+'use strict';
+
+module.exports = require('./lib/dns-sync');
