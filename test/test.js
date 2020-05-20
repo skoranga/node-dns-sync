@@ -1,6 +1,7 @@
 'use strict';
 
 var assert = require('assert'),
+    fs = require('fs'),
     dnsSync = require('../index');
 
 describe('dns sync', function () {
@@ -37,5 +38,13 @@ describe('dns sync', function () {
         assert.ok(ns);
         assert.ok(ns.length >= 1);
         assert.ok(ns[0].match(/^ns[0-9]+\.google\.com$/));
+    });
+
+    it('should fail to resolve if invalid record is asked', function () {
+        var rs1 = dnsSync.resolve('www.google.com', 'Test');
+        var rs2 = dnsSync.resolve('www.google.com', ' && touch test.txt');
+        assert.ok(!rs1);
+        assert.ok(!rs2);
+        assert.ok(!fs.existsSync('test.txt'));
     });
 });

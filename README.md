@@ -5,7 +5,9 @@ node-dns-sync
 
 Sync/Blocking DNS resolve. Main usecase is in node server startup.
 
-### How to Use
+How to Use
+-------
+
 ```javascript
 var dnsSync = require('dns-sync');
 
