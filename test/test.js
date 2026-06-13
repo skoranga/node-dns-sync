@@ -11,6 +11,8 @@ describe('dns sync', function () {
         assert.ok(dnsSync.resolve('www.paypal.com'));
         assert.ok(dnsSync.resolve('www.google.com'));
         assert.ok(dnsSync.resolve('www.yahoo.com'));
+        assert.ok(dnsSync.resolve('0'.repeat(63) + '.000'));
+        assert.ok(dnsSync.resolve('0'.repeat(63) + '.' + '0'.repeat(63)));
     });
 
     it('should fail to resolve dns', function () {
@@ -24,6 +26,9 @@ describe('dns sync', function () {
         assert.ok(!dnsSync.resolve("$(id > /tmp/foo)'"));
         assert.ok(!dnsSync.resolve("cd /tmp; rm -f /tmp/echo; env 'x=() { (a)=>' bash -c \"echo date\"; cat /tmp/echo"));
         assert.ok(!dnsSync.resolve("$(grep -l -z '[^)]=() {' /proc/[1-9]*/environ | cut -d/ -f3)'"));
+        assert.ok(!dnsSync.resolve('0-' + '00000'.repeat(29) + '\\n'));
+        assert.ok(!dnsSync.resolve('0'.repeat(64) + '.000'));
+        assert.ok(!dnsSync.resolve('0.' + '0'.repeat(64)));
     });
 
     it('should resolve AAAA records if asked', function () {
